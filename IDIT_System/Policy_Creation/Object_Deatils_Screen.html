@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h1> Insurance Technology Core System <br><br></h1>
+<style>
+h1{
+background-color: orange;
+  text-align: center;
+  color: white;
+  font-size: 150%;
+}
+
+body{
+background-color: lightgray;
+text-align: left;
+
+}
+
+.textbox{
+background-color: lightblue;
+ text-align: left;
+  
+  font-size: 100%;
+}
+
+button{
+ text-align:right;
+font-size: 115%;
+color: blue;
+  background-color: gray;
+}
+
+.btn_next{
+text-align:right;
+}
+
+.object_screen {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 98%;
+  color: blue;
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+background-color: lightblue;
+font-size: 95%;
+font-weight: bold;
+}
+
+.tp_covers {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 98%;
+  color: blue;
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+background-color: lightblue;
+font-size: 100%;
+font-weight: bold;
+}
+
+h3{
+padding: 4px;
+ border: 5px solid #dddddd;
+  text-align: left;
+background-color: gray;
+color: white;
+}
+
+</style>
+
+</head>
+
+<body> 
+
+<form action="Add_On_covers_Deatils.html" class=object_details>
+<div>
+<h3>Vehicle Deatils Screen<br></h3>
+<div class=object_screen>
+
+<div class=textbox>
+
+<label for="make">Make</label>
+<input type="text" placeholder="Make" name="make01" id=make01 size="10" required>
+
+<label for="model">Model</label>
+<input type="text" placeholder="Make" name="model01" id=model01 size="10" required>
+
+<label for="variant">Variant</label>
+<input type="text" placeholder="Variant" name="variant01" id=variantl01 size="10" required>
+
+<label for="registrationdate">Vehicle Registration Date</label>
+<input type="date" placeholder="Policy End Date" name="regs_date" id=regs_date size="10" required> 
+
+<label for="vihicledate">Vehicle Purchace Date</label>
+<input type="date" placeholder="Policy Start Date" name="vehicle_date" id=vehicle_date size="10"  required><br><br>
+
+
+<label for="vehicle_num">Vehicle Registration Num</label>
+<input type="text" placeholder="MH 04 EC 0067" name="vehicle_num" id=vehicle_num size="10" required>
+
+<label for="eng_num">Engine Number</label>
+<input type="text" placeholder="Engine Number" name="eng_num" id=eng_num size="10" required>
+
+<label for="chasis_num">Chasis Number</label>
+<input type="text" placeholder="Chasis Number" name="chasis_num" id=chasis_num size="10" required>
+
+
+<label for="idv">Vehicle IDV</label>
+<input type="text" placeholder="Vehicle IDV" name="v_idv" id=v_idv size="10" required>
+
+
+
+<label for="fuletype">Fule Type</label>
+      <select class="formInputText valid" name="fule_t" id="fuel_t">
+       <option>Diesel</option>
+       <option>Petrol</option>
+       <option>CNG</option>
+       <option>LPG</option>
+       <option>Petrol with CNG</option>
+
+    </select><br><br>
+
+<label for="v_age">Vehicle Age</label>
+<input type="text" placeholder="Vehicle Age" name="v_age" id=v_age size="10" required>
+
+<label for="vtype">Vehicle Type</label>
+      <select class="formInputText valid" name="v_type" id="v_type">
+       <option>New</option>
+       <option>Used</option>
+    </select>
+
+<label for="cc">Cubic Capacity</label>
+<input type="text" placeholder="Cubic Capacity" name="cc_1" id=cc_1 size="10" required>
+
+<label for="pucity">Primary Used City</label>
+<input type="text" placeholder="Primary Used City" name="primary_city" id=primaryt_city size="15" required>
+
+
+<label for="v_usage">Vehicle Usage</label>
+      <select class="formInputText valid" name="v_usage" id="v_usage" required>
+       <option>Select Usage</option>
+       <option>Domestic/Personal</option>
+       <option>International/Personal</option>
+       <option>Domestic/Social</option>
+       <option>International/Social</option>
+    </select><br><br>
+
+
+<label for="product_name">Type Of Body</label>
+<select id="bodytype" name="bodytype" onchange="bodytypedd()"> 
+     <option value="">-- Select BodyType --</option> 
+       <option value="MoCycle">Motor Cycle</option>
+       <option value="TransV">Transport Vehicle</option>
+   
+</select> 
+
+<label for="vehicle_segment">Vehicle Segment</label>
+<select id="bodyid"></select> 
+
+<script>
+var carsAndModels = {};
+
+carsAndModels['MoCycle'] = ['Sports Bike', 'Off-Road/Dirt', 'Standard', 'Touring','Others'];
+carsAndModels['TransV'] = ['Hatchback', 'Sedan', 'MUV/SUV','Van', 'Jeep', 'standard', 'Others'];
+
+function bodytypedd() {
+    var carList = document.getElementById("bodytype");
+    var modelList = document.getElementById("bodyid");
+    var selCar = carList.options[carList.selectedIndex].value;
+    while (modelList.options.length) {
+        modelList.remove(0);
+    }
+    var bodytype = carsAndModels[selCar];
+    if (bodytype) {
+        var i;
+        for (i = 0; i < bodytype.length; i++) {
+            var b_type = new Option(bodytype[i], i);
+            modelList.options.add(b_type);
+        }
+    }
+} 
+</script>
+<br><br>
+
+
+<div>
+<label for="find_rto">*Find RTO</label> 
+<input type="checkbox" id="find_rto"  value="find_rto" onclick="myFindrto()" required>
+
+<p id="rto_id" style="display:none">
+<select class="formInputText valid" name="fule_t" id="fuel_t">
+       <option>Select RTO</option>
+       <option>Mumbai (MH01)</option>
+       <option>Thane (MH04)</option>
+       <option>Kolhapur (MH09)</option>
+       <option>Banglore (KA01)</option>
+       <option>Belgaum (KA22)</option>
+       <option>Delhi (DL01)</option>
+
+    </select><br><br>
+</p>
+
+<script>
+function myFindrto() {
+  var checkBox = document.getElementById("find_rto");
+  var text = document.getElementById("rto_id");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
+
+<label for="pacover">External Bi-Fuel Kit:</label> 
+<input type="checkbox" id="pacover" onclick="myBifuel()">
+
+<p id="coverid" style="display:none">
+
+
+
+<label for="idv_bifuel">IDV of Bi-Fuel</label>
+<input type="text" placeholder="Bi-Fuel IDV" name="fuel_idv" id=fuel_idv size="10" required>
+
+<label for="bi_fuel_type">Bi-Fuel Type</label>
+   <select class="formInputText valid" name="fule_t" id="fuel_t">
+       <option>Select Bi-Fuel Type</option>
+       <option>CNG</option>
+       <option>LPG</option>
+    </select><br><br>
+
+</p>
+
+<script>
+function myBifuel() {
+  var checkBox = document.getElementById("pacover");
+  var pcover = document.getElementById("coverid");
+  if (checkBox.checked == true){
+    pcover.style.display = "block";
+  } else {
+     pcover.style.display = "none";
+  }
+}
+</script>
+
+
+<label for="pacover">Electrical:</label> 
+<input type="checkbox" id="ele" onclick="myElectric()">
+
+<p id="eleid" style="display:none">
+
+<label for="e_make">Make</label>
+<input type="text" placeholder="Make Name" name="e_make" id=e_make size="10" required>
+
+
+<label for="e_model">Model</label>
+<input type="text" placeholder="Model Name" name="e_model" id=e_model size="10" required>
+
+<label for="e_inv_num">Invoice Num</label>
+<input type="text" placeholder="Invoice Num" name="e_voice_num" id=e_inv_num size="10" required>
+
+<label for="e_idv1">IDV 1</label>
+<input type="text" placeholder="IDV 1" name="e_idv1" id=e_idv1 size="10" required>
+
+<label for="e_idv2">IDV 2</label>
+<input type="text" placeholder="IDV 2" name="e_idv2" id=e_idv2 size="10" required>
+
+<label for="e_idv3">IDV 3</label>
+<input type="text" placeholder="IDV 3" name="e_idv3" id=e_idv3 size="10" required>
+
+
+</p>
+
+<script>
+function myElectric() {
+  var checkBox = document.getElementById("ele");
+  var pcover = document.getElementById("eleid");
+  if (checkBox.checked == true){
+    pcover.style.display = "block";
+  } else {
+     pcover.style.display = "none";
+  }
+}
+</script>
+
+
+<label for="non_ele">Non-Electrical:</label> 
+<input type="checkbox" id="non_ele" onclick="mynonElectric()">
+
+<p id="non_eleid" style="display:none">
+
+<label for="none_make">Make</label>
+<input type="text" placeholder="Make Name" name="none_make" id=none_make size="10" required>
+
+
+<label for="none_model">Model</label>
+<input type="text" placeholder="Model Name" name="none_model" id=none_model size="10" required>
+
+<label for="none_inv_num">Invoice Num</label>
+<input type="text" placeholder="Invoice Num" name="none_voice_num" id=none_inv_num size="10" required>
+
+<label for="none_idv1">IDV 1</label>
+<input type="text" placeholder="IDV 1" name="none_idv1" id=none_idv1 size="10" required>
+
+<label for="none_idv2">IDV 2</label>
+<input type="text" placeholder="IDV 2" name="none_idv2" id=none_idv2 size="10" required>
+
+<label for="none_idv3">IDV 3</label>
+<input type="text" placeholder="IDV 3" name="none_idv3" id=none_idv3 size="10" required>
+
+
+</p>
+
+<script>
+function mynonElectric() {
+  var checkBox = document.getElementById("non_ele");
+  var pcover = document.getElementById("non_eleid");
+  if (checkBox.checked == true){
+    pcover.style.display = "block";
+  } else {
+     pcover.style.display = "none";
+  }
+}
+</script>
+
+
+<label for="fiber_glass">Vehicle fitted with Fiber Glass Fuel Tank</label> 
+<input type="checkbox" id="fiber_glass"  value="fiber_glass" required>
+</div>
+</div>
+</div>
+
+
+
+<div>
+
+<h3>TP Covers<br></h3>
+
+<div class=tp_covers>
+<div>
+<label for="myCheck">Basic TP:</label> 
+<input type="checkbox" id="myCheck" onclick="myFunction()">
+
+<p id="text" style="display:none">
+<label>TPPD(Third Party Property Damange)
+  <input type="checkbox"  id=tppd name"tppd">
+  <span class="checkmark"></span>
+</label>
+<label>TPBI(Third Party Body Injury)
+  <input type="checkbox"  id=tpbi name="tpbi">
+  <span class="checkmark"></span>
+</label>
+<label>WC(Workmen Compension)
+  <input type="checkbox"  id=wc name="wc">
+  <span class="checkmark"></span>
+</label>
+</p>
+
+<script>
+function myFunction() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("text");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+</div>
+
+<div>
+
+<label for="pacover1">PA Cover for Paid driver:</label> 
+<input type="checkbox" id="pacover1" onclick="myPACoverPaid()">
+
+<p id="cover1id" style="display:none">
+
+<label for="sum_insur">Sum Inssured</label>
+<input type="text" placeholder="Sum Inssured" name="sum_insure" id=sum_insure size="10" required>
+
+<label for="person">Person</label>
+<input type="text" placeholder="Person" name="insure_persion" id=insure_person size="10" required>
+
+</p>
+
+<script>
+function myPACoverPaid() {
+  var checkBox = document.getElementById("pacover1");
+  var pcover = document.getElementById("cover1id");
+  if (checkBox.checked == true){
+    pcover.style.display = "block";
+  } else {
+     pcover.style.display = "none";
+  }
+}
+</script>
+</div>
+
+
+<div>
+
+<label for="paowner">PA Cover for Owner driver:</label> 
+<input type="checkbox" id="paowner" onclick="myPAOwnerDriver()">
+
+<p id="ownerid" style="display:none">
+
+<label for="sum_insur">Sum Inssured</label>
+<input type="text" placeholder="Sum Inssured" name="sum_insure" id=sum_insure size="10" required>
+
+<label for="person">Person</label>
+<input type="text" placeholder="Person" name="insure_persion" id=insure_person size="10" required>
+
+</p>
+
+<script>
+function myPAOwnerDriver() {
+  var checkBox = document.getElementById("paowner");
+  var pcover = document.getElementById("ownerid");
+  if (checkBox.checked == true){
+    pcover.style.display = "block";
+  } else {
+     pcover.style.display = "none";
+  }
+}
+</script>
+</div>
+
+<div>
+
+<label for="paiddriver">Wider Legal Laibility to Paid Driver/Cleaner/Conductor:</label> 
+<input type="checkbox" id="paiddriver" onclick="myWiderDriver()">
+
+<p id="driverid" style="display:none">
+
+<label for="sum_insur">Sum Inssured</label>
+<input type="text" placeholder="Sum Inssured" name="sum_insure" id=sum_insure size="10" required>
+
+<label for="person">Person</label>
+<input type="text" placeholder="Person" name="insure_persion" id=insure_person size="10" required>
+
+</p>
+
+<script>
+function myWiderDriver() {
+  var checkBox = document.getElementById("paiddriver");
+  var widerpaid = document.getElementById("driverid");
+  if (checkBox.checked == true){
+    widerpaid.style.display = "block";
+  } else {
+     widerpaid.style.display = "none";
+  }
+}
+</script>
+
+</div>
+
+
+<div>
+
+<label for="paiddrivere">Legal Laibility to Employees Exccluding Paid Driver/Cleaner/Conductor:</label> 
+<input type="checkbox" id="paiddrivere" onclick="myWiderDriverE()">
+
+<p id="drivereid" style="display:none">
+
+<label for="sum_insur">Sum Inssured</label>
+<input type="text" placeholder="Sum Inssured" name="sum_insure" id=sum_insure size="10" required>
+
+</p>
+
+<script>
+function myWiderDriverE() {
+  var checkBox = document.getElementById("paiddrivere");
+  var widerpaide = document.getElementById("drivereid");
+  if (checkBox.checked == true){
+    widerpaide.style.display = "block";
+  } else {
+     widerpaide.style.display = "none";
+  }
+}
+</script>
+</div>
+
+
+<div>
+<label>Liability to Soldier/Sailor/Airman
+  <input type="checkbox" id=ll_airman>
+  <span class="checkmark"></span>
+</label><br>
+
+<label>Geographical TP
+  <input type="checkbox"  id=geo_graph name="geo">
+  <span class="checkmark"></span>
+</label><br>
+
+<label>Trailer TP
+  <input type="checkbox"  id=trailer_tp name="tp_trail">
+  <span class="checkmark"></span>
+</label><br>
+
+<label>TPPD Restricted
+  <input type="checkbox"  id=tp_restric name="tppd_restric">
+  <span class="checkmark"></span>
+</label>
+
+<label>Own Premises discount-TP
+  <input type="checkbox"  id=trailer_tp name="tp_trail">
+  <span class="checkmark"></span>
+</label><br>
+
+<label for="myCheck">Does Insured have valid driving license:</label> 
+<input type="checkbox" id="myCheck" onclick="myFunction()">
+</div>
+
+
+<div class=btn_next>
+<button type="submit" id=backid>Back</button>
+<button type="submit" id=cancelid>Cancel</button>
+<button type="submit" id=nextid>Next</button>
+</div>
+
+
+</div>
+</div>
+
+</form>
+
+</body>
+</html>
