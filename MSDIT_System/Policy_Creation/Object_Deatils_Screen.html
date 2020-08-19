@@ -344,9 +344,9 @@ function mynonElectric() {
 <div class=tp_covers>
 <div>
 <label for="myCheck">Basic TP:</label> 
-<input type="checkbox" id="myCheck" onclick="myFunction()">
+<input type="checkbox" id="myCheck_tp" onclick="myFunction()">
 
-<p id="text" style="display:none">
+<p id="textid" style="display:none">
 <label>TPPD(Third Party Property Damange)
   <input type="checkbox"  id=tppd name"tppd">
   <span class="checkmark"></span>
@@ -363,8 +363,8 @@ function mynonElectric() {
 
 <script>
 function myFunction() {
-  var checkBox = document.getElementById("myCheck");
-  var text = document.getElementById("text");
+  var checkBox = document.getElementById("myCheck_tp");
+  var text = document.getElementById("textid");
   if (checkBox.checked == true){
     text.style.display = "block";
   } else {
